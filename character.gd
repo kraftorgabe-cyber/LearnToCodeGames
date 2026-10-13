@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@onready var standing_collision = $StandingCollision
-@onready var crouching_collision = $CrouchingCollision
 @onready var sprite = $Sprite2D
+@onready var collision = $CollisionShape2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -19,12 +18,15 @@ func _physics_process(delta):
 	# Handles crouch
 	if Input.is_action_just_pressed("Crouch"):
 		sprite.scale.y = 0.5
-		# Optional: shift sprite position down slightly if it floats when scaled
-		sprite.position.y += 32 
+		collision.scale.y = 0.5
+		sprite.position.y += 32
+		collision.position.y += 32
 		
 	if Input.is_action_just_released("Crouch"):
 		sprite.scale.y = 1.0
+		collision.scale.y = 1.0
 		sprite.position.y -= 32
+		collision.position.y -= 32
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("Left", "Right")
