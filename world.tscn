@@ -5,19 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://bib6ytr5wpovj" path="res://character.tscn" id="2_tlwt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmipl"]
-size = Vector2(614, 30)
+size = Vector2(1159, 30)
 
-[node name="World" type="StaticBody2D" unique_id=1413451198]
+[node name="Main" type="Node" unique_id=1622712841]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1413451198]
 script = ExtResource("1_tlwt5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232066881]
-position = Vector2(520, 331)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1232066881]
+position = Vector2(577.5, 331)
 shape = SubResource("RectangleShape2D_qmipl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=235623909]
-position = Vector2(525, 334.99997)
-scale = Vector2(4.84375, 0.234375)
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=235623909]
+position = Vector2(579.00006, 334.99997)
+scale = Vector2(9.031251, 0.234375)
 texture = ExtResource("1_fj7yv")
 
 [node name="Character" parent="." unique_id=1855883284 instance=ExtResource("2_tlwt5")]
+unique_name_in_owner = true
 position = Vector2(333, 141)
